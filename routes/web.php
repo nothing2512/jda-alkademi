@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post("/post", function() {
+    $file = request()->file("file");
+    return response()->json($file->extension());
+});
+
 Route::get('/', function () {
     return view('welcome');
 })->name("welcome");
@@ -52,7 +57,7 @@ Route::get("/item/{id}", function($id) {
     return $result;
 })->name("item.detail");
 
-Route::any("/user", function() {
+Route::get("/user", function() {
     $users = [
         [
             "id" => 1,
@@ -90,7 +95,15 @@ Route::any("/user", function() {
         return "data tidak ditemukan";
     }
 
-    return $result;
+    return view("user.detail", [
+        "user" => $result, // $user,
+        "buku" => [
+            "id" => 1,
+            "name" => "Skripsi"
+        ],
+        "title" => "Judul", // $title,
+        "description" => "<h4>Lorem Ipsum Dolor Sit Amet</h4>" // $description
+    ]);
 })->name("user.detail");
 
 // middleware
