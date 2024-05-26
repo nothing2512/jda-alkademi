@@ -13,13 +13,14 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * data yang bisa diisi / diubah
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -39,9 +40,11 @@ class User extends Authenticatable
      */
     protected function casts(): array
     {
+        // hash : bcrypt, sha256, md5
+        // string -> cast to (Tipe Data Date/Tanggal)
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'email_verified_at' => 'datetime', // Carbon (Datetime)
+            'password' => 'hashed', // Hash
         ];
     }
 }
