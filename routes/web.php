@@ -15,3 +15,5 @@ Route::get("/category/update/{id}", [CategoryController::class, "update"]);
 Route::get("/category/delete/{id}", [CategoryController::class, "destroy"]);
 
 Route::get("/products", [ProductController::class, "index"]);
+// Route::get("/product/{id}", [ProductController::class, "show"]);
+Route::get("/product/{id}", [ProductController::class, "detail"]);

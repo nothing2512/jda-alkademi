@@ -26,4 +26,11 @@ class Product extends Model
             "categories.name as category"
         ]);
     }
+
+    public function category() {
+        // many-to-one
+        return $this->belongsTo(Category::class, "category_id", "id");
+    }
+
+    // jenis_product - product - category
 }

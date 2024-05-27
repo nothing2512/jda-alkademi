@@ -51,6 +51,10 @@ class CategoryController extends Controller
             ->where("id", "=", $id) // WHERE id = ?
             ->first(); // SELECT * , LIMIT 1
 
+        $products = $category->products;
+        // looping products 
+        // - get jenis_product
+
         // SELECT * FROM categories WHERE id = 1 LIMIT 1
         return $category;
     }
