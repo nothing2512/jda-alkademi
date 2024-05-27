@@ -33,3 +33,22 @@ Route::get("/getSession", function() {
         "name" => session()->get("name"),
     ];
 });
+
+Route::get("/login", function() {
+    session()->put("isLoggedIn", true);
+    return "Login";
+});
+
+Route::get("/logout", function() {
+    session()->put("isLoggedIn", false);
+    return "Logout";
+});
+
+Route::get("/check/login", function() {
+    $isLoggedIn = session()->get("isLoggedIn") == true;
+    if ($isLoggedIn) {
+        return "Logged In";
+    } else {
+        return "Logged Out";
+    }
+});
